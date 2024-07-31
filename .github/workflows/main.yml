@@ -30,8 +30,10 @@ jobs:
 
     - name: Install ChromeDriver
       run: |
-        # Remove any existing ChromeDriver
-        # sudo rm -f /usr/local/bin/chromedriver
+        # Remove any existing ChromeDriver from the PATH
+        if [ -f /usr/local/bin/chromedriver ]; then
+          sudo rm /usr/local/bin/chromedriver
+        fi
         
         # Download and install the specific ChromeDriver version
         wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/127.0.6533.88/chromedriver_linux64.zip
@@ -44,6 +46,7 @@ jobs:
       run: |
         sudo Xvfb :99 -ac &
         python script.py
+
 
 
 
