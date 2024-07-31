@@ -23,10 +23,8 @@ jobs:
 
     - name: Install Google Chrome
       run: |
-        sudo apt-get update
-        sudo apt-get install -y wget apt-transport-https gnupg
         wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-        echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+        sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
 
@@ -34,13 +32,13 @@ jobs:
       run: |
         # Remove any existing ChromeDriver
         sudo rm -f /usr/local/bin/chromedriver
-        
+
         # Get the installed Chrome version
         CHROME_VERSION=$(google-chrome --version | sed 's/Google Chrome //g' | cut -d '.' -f 1)
-        
+
         # Get the matching ChromeDriver version
         CHROMEDRIVER_VERSION=(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_CHROME_VERSION)
-        
+
         # Download and install the matching ChromeDriver version
         wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
         sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
@@ -52,6 +50,12 @@ jobs:
       run: |
         sudo Xvfb :99 -ac &
         python script.py
+      shell: /usr/bin/bash -e {0}
+      env:
+        pythonLocation: /opt/hostedtoolcache/Python/3.12.4/x64
+        LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.4/x64/lib
+
+
 
 
 
