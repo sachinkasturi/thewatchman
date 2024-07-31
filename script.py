@@ -93,10 +93,10 @@ while True:
                 telegram_bot_sendtext(status)
             i += 1
         else:
-            telegram_bot_sendques("Question in 2")
+            telegram_bot_sendques("Question in CS_kartik")
             time.sleep(720)
     except Exception as e:
-        telegram_bot_sendtext("An error occurred 2")
+        telegram_bot_sendtext("An error occurred in CS_kartik ")
 # Quit the WebDriver
 driver.quit()
 
