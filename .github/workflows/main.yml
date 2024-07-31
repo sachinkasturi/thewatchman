@@ -37,7 +37,7 @@ jobs:
         CHROME_VERSION=$(google-chrome --version | sed 's/Google Chrome //g' | cut -d '.' -f 1)
         
         # Get the matching ChromeDriver version
-        CHROMEDRIVER_VERSION=(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_{CHROME_VERSION})
+        CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION})
         
         # Download and install the matching ChromeDriver version
         wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
@@ -50,6 +50,7 @@ jobs:
       run: |
         sudo Xvfb :99 -ac &
         python script.py
+
 
 
 
