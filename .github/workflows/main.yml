@@ -14,30 +14,32 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3  # Updated to v3
       with:
-        python-version: '3.x'
+        python-version: '3.x'  # Adjust this to the required Python version
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Install ChromeDriver
+    - name: Install Google Chrome and ChromeDriver
       run: |
-      
         # Install dependencies
         sudo apt-get update
-        sudo apt-get install -y unzip xvfb libxi6 libgconf-2-4
-        # Download the matching chromedriver version for the installed Chrome
-        CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
-        wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
-        unzip /tmp/chromedriver.zip -d /usr/local/bin/
-
-    - name: Install Google Chrome
-      run: |
+        sudo apt-get install -y unzip xvfb libxi6 libgconf-2-4 curl
+        
+        # Install Google Chrome
         wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
         sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
+        
+        # Get the installed Chrome version
+        CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+        
+        # Download the matching ChromeDriver version for the installed Chrome
+        CHROMEDRIVER_VERSION=(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_CHROME_VERSION)
+        wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
+        sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
 
     - name: Run script
       env:
@@ -45,5 +47,3 @@ jobs:
       run: |
         sudo Xvfb :99 -ac &
         python script.py
-
-
