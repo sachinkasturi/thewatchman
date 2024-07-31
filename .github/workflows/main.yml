@@ -39,7 +39,7 @@ jobs:
         CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+\.\d+' | head -n 1)
         
         # Get the major version of Chrome
-        CHROME_MAJOR_VERSION=(echo(echo CHROME_VERSION | cut -d '.' -f 1)
+        CHROME_MAJOR_VERSION=(echo(echo CHROME_VERSION | cut -d '.' -f 1))
         
         # Get the matching ChromeDriver version
         CHROMEDRIVER_VERSION=(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_CHROME_MAJOR_VERSION)
