@@ -14,7 +14,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3  # Updated to v3
       with:
-        python-version: '3.x'  # Adjust this to the required Python version
+        python-version: '3.x'
 
     - name: Install dependencies
       run: |
@@ -33,8 +33,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
         
+        # Remove old chromedriver if it exists (ignore error if it doesn't)
+        sudo rm -f /usr/local/bin/chromedriver
+        
         # Get the installed Chrome version
-        CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+        CHROME_VERSION=$(google-chrome --version | grep -oP '\\d+\\.\\d+\\.\\d+')
         
         # Download the matching ChromeDriver version for the installed Chrome
         CHROMEDRIVER_VERSION=(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_CHROME_VERSION)
