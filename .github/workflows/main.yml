@@ -31,7 +31,7 @@ jobs:
     - name: Install ChromeDriver
       run: |
         # Remove any existing ChromeDriver
-        sudo rm -f /usr/local/bin/chromedriver
+        # sudo rm -f /usr/local/bin/chromedriver
         
         # Download and install the specific ChromeDriver version
         wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/127.0.6533.88/chromedriver_linux64.zip
