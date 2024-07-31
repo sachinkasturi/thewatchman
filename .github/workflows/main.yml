@@ -35,16 +35,13 @@ jobs:
         # Remove any existing ChromeDriver
         sudo rm -f /usr/local/bin/chromedriver
         
-        # Get Chrome version
+        # Get the installed Chrome version
         CHROME_VERSION=$(google-chrome --version | sed 's/Google Chrome //g' | cut -d '.' -f 1)
         
-        # Check and install the corresponding ChromeDriver version
-        if [ "$CHROME_VERSION" = "127" ]; then
-          CHROMEDRIVER_VERSION="127.0.6533.88"
-        else
-          CHROMEDRIVER_VERSION=(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_CHROME_VERSION)
-        fi
-
+        # Get the matching ChromeDriver version
+        CHROMEDRIVER_VERSION=(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_CHROME_VERSION)
+        
+        # Download and install the matching ChromeDriver version
         wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
         sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
         sudo chmod +x /usr/local/bin/chromedriver
@@ -55,6 +52,7 @@ jobs:
       run: |
         sudo Xvfb :99 -ac &
         python script.py
+
 
 
 
