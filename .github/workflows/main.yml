@@ -1,18 +1,14 @@
 name: Run Python Script with Selenium
 
 on:
-  
+  workflow_dispatch:
   schedule:
     - cron: "0 */6 * * *"
 
 jobs:
   my_job:
     runs-on: ubuntu-latest
-    timeout-minutes: 358  # Set timeout to 355 minutes
-
-jobs:
-  run-script:
-    runs-on: ubuntu-latest
+    timeout-minutes: 358  # Set timeout to 358 minutes
 
     steps:
     - name: Checkout repository
