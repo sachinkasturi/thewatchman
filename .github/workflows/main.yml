@@ -9,10 +9,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3  # Updated to v3
 
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v3  # Updated to v3
       with:
         python-version: '3.x'
 
@@ -46,4 +46,5 @@ jobs:
       run: |
         sudo Xvfb :99 -ac &
         python script.py
+
 
