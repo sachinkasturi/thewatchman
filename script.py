@@ -49,7 +49,7 @@ passw.send_keys("Kartik@741")
 passw.send_keys(Keys.ENTER)
 time.sleep(3)
 
-telegram_bot_sendtext("Logged-2")
+telegram_bot_sendtext("Logged-kar")
 
 # Navigate to the authoring page
 driver.get("https://expert.chegg.com/qna/authoring/answer")
@@ -78,7 +78,7 @@ while True:
 
            # Calculate the difference in seconds
            n = (target_time - now).total_seconds()
-           telegram_bot_sendques("LIMIT HIT FOR THE DAY IN CS_kartik")
+           telegram_bot_sendques("LIMIT HIT FOR THE DAY IN CSkar")
            time.sleep(n)
         driver.get("https://expert.chegg.com/qna/authoring/answer")
         time.sleep(5)
@@ -93,10 +93,10 @@ while True:
                 telegram_bot_sendtext(status)
             i += 1
         else:
-            telegram_bot_sendques("Question in CS_kartik")
+            telegram_bot_sendques("Question in CSkar")
             time.sleep(720)
     except Exception as e:
-        telegram_bot_sendtext("An error occurred in CS_kartik ")
+        telegram_bot_sendtext("An error occurred in CSkar ")
 # Quit the WebDriver
 driver.quit()
 
