@@ -78,7 +78,7 @@ while True:
 
            # Calculate the difference in seconds
            n = (target_time - now).total_seconds()
-           telegram_bot_sendques("LIMIT HIT FOR THE DAY IN 2")
+           telegram_bot_sendques("LIMIT HIT FOR THE DAY IN CS_kartik")
            time.sleep(n)
         driver.get("https://expert.chegg.com/qna/authoring/answer")
         time.sleep(5)
