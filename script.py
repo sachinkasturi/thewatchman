@@ -44,13 +44,13 @@ time.sleep(3)
 #print(driver.find_element(By.XPATH, "/html/body").text)
 
 # Username
-element = driver.find_element(By.XPATH, "/html/body/div[1]/main/div[3]/div/form/div[1]/div[2]/div/div/input")  # Replace with the correct XPath
+element = driver.find_element(By.XPATH, "/html/body/div/main/section/div/div/div/form/div[1]/div/div[1]/div/input")  # Replace with the correct XPath
 element.send_keys(username)
 element.send_keys(Keys.ENTER)
 time.sleep(3)
 
 # Password
-passw = driver.find_element(By.XPATH, "/html/body/div[1]/main/div[3]/div/form/div[1]/div[2]/div[2]/div/div/input")  # Replace with the correct XPath
+passw = driver.find_element(By.XPATH, "/html/body/div/main/section/div/div/div/form/div[1]/div/div[2]/div/input")  # Replace with the correct XPath
 passw.send_keys(password)
 passw.send_keys(Keys.ENTER)
 time.sleep(3)
